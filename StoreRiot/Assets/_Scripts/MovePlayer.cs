@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class MovePlayer : MonoBehaviour
 {
-    [SerializeField] float walkSpeed, sprintMultiplier;
+    [SerializeField] float walkSpeed, sprintMultiplier, rotationSpeed = 10f;
     float speed = 0;
     Rigidbody rb;
+    float angle;
 
     // Use this for initialization
     void Start()
@@ -18,22 +19,17 @@ public class MovePlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (Input.GetAxis("Sprint"))
-        //{
-        //    speed = runSpeed;
-        //}
-        //else if (Input.GetKeyUp(KeyCode.LeftShift))
-        //{
-        //    speed = walkSpeed;
-        //}
-        Vector3 lookDirection = new Vector3(Input.GetAxis("RightHorizontal"), 0, Input.GetAxis("RightVertical"));
-        Vector3 v = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        if (Input.GetAxis("Sprint")>0)
+        //Movement
+        Vector3 v = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
+        if (Input.GetAxis("Sprint") > 0)
         {
             Debug.Log(Input.GetAxis("Sprint").ToString());
         }
-        rb.velocity = v * speed *(1+Input.GetAxis("Sprint")*sprintMultiplier);
-        transform.right = rb.velocity;
-        //transform.LookAt(transform.position + lookDirection, Vector3.up);
+        rb.velocity = v * speed * (1 + Input.GetAxis("Sprint") * sprintMultiplier);
+
+        //Rotation
+        angle = Mathf.Atan2(Input.GetAxis("RightHorizontal"), Input.GetAxis("RightVertical")) * Mathf.Rad2Deg+90;
+        Debug.Log(angle);
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, angle, 0), rotationSpeed * Time.deltaTime);
     }
 }

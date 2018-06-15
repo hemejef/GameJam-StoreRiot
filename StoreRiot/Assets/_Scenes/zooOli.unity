@@ -306,8 +306,13 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114674321828857090, guid: 0455e77fc521f9b499c4137bbdd0694a,
         type: 2}
-      propertyPath: walkSpeed
-      value: 4
+      propertyPath: rotationSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 54032461317713968, guid: 0455e77fc521f9b499c4137bbdd0694a,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 112
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0455e77fc521f9b499c4137bbdd0694a, type: 2}
