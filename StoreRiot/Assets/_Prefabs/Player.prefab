@@ -22,9 +22,10 @@ GameObject:
   - component: {fileID: 33046677147166068}
   - component: {fileID: 23410826963541274}
   - component: {fileID: 136537601325921766}
+  - component: {fileID: 114102177327497710}
   m_Layer: 0
-  m_Name: Nose
-  m_TagString: Untagged
+  m_Name: Gun
+  m_TagString: Gun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49,6 +50,34 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1845264658502642
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4157900750443548}
+  m_Layer: 0
+  m_Name: BarrelEnd
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4157900750443548
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1845264658502642}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.46, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4857372224371630}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4540011475292070
 Transform:
   m_ObjectHideFlags: 1
@@ -72,7 +101,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0.542, y: 0.534, z: 0}
   m_LocalScale: {x: 0.291071, y: 0.291071, z: 0.291071}
-  m_Children: []
+  m_Children:
+  - {fileID: 4157900750443548}
   m_Father: {fileID: 4540011475292070}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
@@ -173,8 +203,24 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &114102177327497710
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1366182340036318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee1bfb0c5121cd84b94d54342c4a92c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFiring: 0
+  roundsPerMin: 60
+  bulletSpeed: 0
+  bullet: {fileID: 1874761323410132, guid: 48655af9a21fc9847b07e6d5320f363a, type: 2}
+  barrelEnd: {fileID: 4157900750443548}
 --- !u!114 &114674321828857090
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -188,6 +234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 4
   sprintMultiplier: 1.5
+  rotationSpeed: 10
 --- !u!136 &136537601325921766
 CapsuleCollider:
   m_ObjectHideFlags: 1

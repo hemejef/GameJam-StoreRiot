@@ -8,12 +8,14 @@ public class MovePlayer : MonoBehaviour
     float speed = 0;
     Rigidbody rb;
     float angle;
+    GunController theGun;
 
     // Use this for initialization
     void Start()
     {
         speed = walkSpeed;
         rb = gameObject.GetComponent<Rigidbody>();
+        theGun = GameObject.FindGameObjectWithTag("Gun").GetComponent<GunController>();
     }
 
     // Update is called once per frame
@@ -29,7 +31,16 @@ public class MovePlayer : MonoBehaviour
 
         //Rotation
         angle = Mathf.Atan2(Input.GetAxis("RightHorizontal"), Input.GetAxis("RightVertical")) * Mathf.Rad2Deg+90;
-        Debug.Log(angle);
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, angle, 0), rotationSpeed * Time.deltaTime);
+
+        //Shoot
+        if (Input.GetAxis("Shoot") > 0.1f)
+        {
+            theGun.isFiring = true;
+        }
+        else
+        {
+            theGun.isFiring = false;
+        }
     }
 }
